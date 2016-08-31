@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -26,7 +26,7 @@
 
     <!--Navigation-->
     <div class="navbar-fixed">
-        <nav id="nav_f" class="default_color" role="navigation">
+        <nav id="nav_f" class="default_color">
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="#" id="logo-container" class="brand-logo">Cole Chambers</a>
@@ -74,13 +74,14 @@
                     <div class="center promo promo-example">
                         <i class="mdi-trending-up"></i>
                         <h5 class="promo-caption">Stock Quote</h5>
-                        <p class="light center">
-                            <form class="well control-group form-inline">
-                                <label>Try "AAPL" or "MSFT" or "GE":</label>
-                                <input type="text" id="symbol" class="input-" placeholder="Enter symbol">
-                                <button type="submit" class="btn btn-primary" data-loading-text="Loading quote data...">Get Quote</button>
-                            </form>
-                        </p>
+                        <!-- <p class="light center"> -->
+                        <form class="">
+                            <label>Try "AAPL" or "MSFT" or "GE":</label>
+                            <input type="text" id="symbol" class="input-" placeholder="Enter symbol">
+                            <button type="submit" class="btn btn-primary" data-loading-text="Loading quote data...">Get Quote</button>
+                            <span class="help-inline">Want more symbols? <a href="http://markitondemand.github.com/DataApis/LookupSample/" target="_blank">Try our Lookup API</a>.</span>
+                        </form>
+                        <!-- </p> -->
                     </div>
                 </div>
                 <!-- <div class="col s12 m4 l4">
@@ -202,7 +203,7 @@
 
     <!--Parallax-->
     <div class="parallax-container ">
-        <div class="parallax "><img src="img/parallax1.png "></div>
+        <div class="parallax "><img src="img/parallax1.png " alt="abc"></div>
     </div>
 
     <!--Team-->
@@ -261,7 +262,7 @@
     </div> -->
 
     <!--Footer-->
-    <footer id="contact " class="page-footer default_color scrollspy ">
+    <footer id="contact" class="page-footer default_color scrollspy">
         <div class="container ">
             <div class="row ">
                 <div class="col l6 s12 ">
@@ -323,12 +324,14 @@
 
 
     <!--  Scripts-->
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src=" js/materialize.js "></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+
+    <!-- <script src=" js/materialize.js "></script> -->
     <script src="min/plugin-min.js "></script>
     <script src="min/custom-min.js "></script>
-    <script src="js/markitquote.js "></script>
-
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="js/markit.js"></script>
     <script type="text/javascript">
         $(function() {
 
@@ -363,7 +366,7 @@
         //prototype some methods onto our Quote Service
         Markit.QuoteService.prototype.clearResult = function() {
             this.resetForm();
-            $("#resultContainer").remove();
+            $("#resultContainerX").remove();
             $("div.alert").remove();
         };
 
@@ -377,12 +380,12 @@
         };
 
         Markit.QuoteService.prototype.success = function(jsonResult) {
-            var $container = $("<div class='hide' id='resultContainer' />");
-            $container.append("<h4>" + jsonResult.Name + " (" + jsonResult.Symbol + ")</h4>");
-            $container.append(this.renderResultTable(jsonResult));
+            var $containerX = $("<div class='' id='resultContainerX' />");
+            $containerX.append("<h4>" + jsonResult.Name + " (" + jsonResult.Symbol + ")</h4>");
+            $containerX.append(this.renderResultTable(jsonResult));
 
-            $("form").after($container);
-            $container.fadeIn('fast');
+            $("form").after($containerX);
+            $containerX.fadeIn('fast');
             this.resetForm();
         };
 
@@ -430,6 +433,8 @@
             return (chg <= 0) ? chg.toFixed(2) : "+" + chg.toFixed(2);
         };
     </script>
+
+
 
 
 </body>
